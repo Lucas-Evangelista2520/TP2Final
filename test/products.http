@@ -1,0 +1,67 @@
+@host = http://localhost:3004
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmUxNWE2ODAwZmQzMmZmMWU3ZTNiZSIsImVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTc2NDYzMjE5NCwiZXhwIjoxNzY0NjM1Nzk0fQ.79rtcbCwjeflXHyHHUX1bUeQXF0C1_dUzsDNvEPFAXw
+
+### Registrar un nuevo usuario
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Iniciar sesión de usuario y obtener un token JWT, colocar en @token
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Crear un nuevo producto 
+POST {{host}}/api/v1/productos
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "producto": "Producto de prueba 4",
+  "stockAmount": 9
+}
+
+### Obtener todos los productos 
+GET {{host}}/api/v1/productos
+Authorization: Bearer {{token}}
+
+### Obtener un producto por ID 
+GET {{host}}/api/v1/productos/692e1930797038f05e940df5
+Authorization: Bearer {{token}}
+
+
+### Actualizar un producto existente (Va a dar error porque no le pasamos nunca la auth)
+PUT {{host}}/api/v1/productos/nosecumplelaauth123456
+Content-Type: application/json
+
+{
+  "producto": "Laptop Gaming Editado",
+  "stockAmount": 7,
+  "fechaIngreso": "2023-12-01"
+}
+
+
+
+
+### Actualizar un producto existente (requiere JWT) (cambiar ultimo digito para probar que no es valido)
+PUT {{host}}/api/v1/productos/692e1930797038f05e940df5
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "producto": "Laptop Gaming Editado",
+  "stockAmount": 7,
+  "fechaIngreso": "2023-12-01"
+}
+
+### Eliminar un producto (requiere JWT)
+DELETE {{host}}/api/v1/productos/f98a9734-8b9f-4053-90c9-4883b1f5db48
+Authorization: Bearer {{token}}

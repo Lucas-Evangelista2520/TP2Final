@@ -25,8 +25,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "producto": "Producto de prueba 4",
-  "stockAmount": 9
+  "producto": "Producto de prueba ultimo",
+  "stockAmount": 15
 }
 
 ### Obtener todos los productos 
@@ -34,12 +34,12 @@ GET {{host}}/api/v1/productos
 Authorization: Bearer {{token}}
 
 ### Obtener un producto por ID 
-GET {{host}}/api/v1/productos/692e1930797038f05e940df5
+GET {{host}}/api/v1/productos/692e278dc9bcc6923d07afc4
 Authorization: Bearer {{token}}
 
 
 ### Actualizar un producto existente (Va a dar error porque no le pasamos nunca la auth)
-PUT {{host}}/api/v1/productos/nosecumplelaauth123456
+PUT {{host}}/api/v1/productos/692e278dc9bcc6923d07afc4
 Content-Type: application/json
 
 {
@@ -47,8 +47,6 @@ Content-Type: application/json
   "stockAmount": 7,
   "fechaIngreso": "2023-12-01"
 }
-
-
 
 
 ### Actualizar un producto existente (requiere JWT) (cambiar ultimo digito para probar que no es valido)
@@ -57,11 +55,11 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "producto": "Laptop Gaming Editado",
-  "stockAmount": 7,
+  "producto": "Producto Final Editado",
+  "stockAmount": 22,
   "fechaIngreso": "2023-12-01"
 }
 
 ### Eliminar un producto (requiere JWT)
-DELETE {{host}}/api/v1/productos/f98a9734-8b9f-4053-90c9-4883b1f5db48
+DELETE {{host}}/api/v1/productos/692e16ee8302b348bb7d1144
 Authorization: Bearer {{token}}

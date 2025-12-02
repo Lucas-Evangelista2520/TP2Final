@@ -2,8 +2,6 @@ import { Product } from "../models/product.model.js";
 
 class ProductService {
     constructor() {
-        // this.supabase = SupaBaseConnection.connect(); // No se usa con Mongoose
-        // this.tableName = "products"; // No se usa con Mongoose
     }
 
     async createProduct(productData) {

@@ -5,8 +5,7 @@ import { config } from "../config/config.js";
 
 class AuthService {
     constructor() {
-        // this.supabase = SupaBaseConnection.connect(); // No se usa con Mongoose
-        // this.tableName = "users"; // No se usa con Mongoose
+
     }
 
     async register(email, password) {
